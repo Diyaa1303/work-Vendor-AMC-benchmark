@@ -1,0 +1,100 @@
+-- AMC Benchmark: simulated data (not real company data)
+-- Creates and loads the tables. Safe to re-run.
+DROP TABLE IF EXISTS amc_renewals;
+DROP TABLE IF EXISTS partners;
+
+CREATE TABLE partners (
+  partner_id INTEGER PRIMARY KEY,
+  partner_name TEXT,
+  region TEXT
+);
+CREATE TABLE amc_renewals (
+  renewal_id INTEGER PRIMARY KEY,
+  partner_id INTEGER,
+  fy TEXT,          -- financial year, e.g. '2025-26'
+  amc_value REAL,   -- closing AMC value in rupees; NULL if not closed
+  status TEXT,      -- 'Closed', 'Pending' or 'Lapsed'
+  FOREIGN KEY (partner_id) REFERENCES partners(partner_id)
+);
+
+INSERT INTO partners VALUES
+(1,'Apex Systems','South'),
+(2,'BlueWave Tech','North'),
+(3,'Cobalt Infosolutions','West'),
+(4,'Delta Networks','East'),
+(5,'Everest IT','South'),
+(6,'Falcon Digital','North'),
+(7,'Granite Solutions','West'),
+(8,'Horizon Technologies','East'),
+(9,'Indigo Systems','South'),
+(10,'Jade Infotech','North'),
+(11,'Kestrel Computing','West'),
+(12,'Lotus Data','East'),
+(13,'Meridian IT','South'),
+(14,'Nova Channel','North'),
+(15,'Orbit Solutions','West'),
+(16,'Pinnacle Tech','East'),
+(17,'Quartz Systems','South'),
+(18,'Redwood Infotech','North'),
+(19,'Summit Networks','West'),
+(20,'Tidal Computing','East');
+
+INSERT INTO amc_renewals VALUES
+(1,1,'2024-25',462000,'Closed'),
+(2,1,'2025-26',527000,'Closed'),
+(3,1,'2026-27',NULL,'Lapsed'),
+(4,2,'2024-25',74000,'Closed'),
+(5,2,'2025-26',84000,'Closed'),
+(6,2,'2026-27',71000,'Closed'),
+(7,3,'2024-25',133000,'Closed'),
+(8,3,'2025-26',129000,'Closed'),
+(9,3,'2026-27',NULL,'Pending'),
+(10,4,'2024-25',170000,'Closed'),
+(11,4,'2025-26',187000,'Closed'),
+(12,4,'2026-27',221000,'Closed'),
+(13,5,'2024-25',451000,'Closed'),
+(14,5,'2025-26',474000,'Closed'),
+(15,5,'2026-27',NULL,'Pending'),
+(16,6,'2024-25',246000,'Closed'),
+(17,6,'2025-26',239000,'Closed'),
+(18,6,'2026-27',299000,'Closed'),
+(19,7,'2024-25',75000,'Closed'),
+(20,7,'2025-26',69000,'Closed'),
+(21,7,'2026-27',77000,'Closed'),
+(22,8,'2024-25',338000,'Closed'),
+(23,8,'2025-26',372000,'Closed'),
+(24,8,'2026-27',387000,'Closed'),
+(25,9,'2024-25',320000,'Closed'),
+(26,9,'2025-26',294000,'Closed'),
+(27,9,'2026-27',229000,'Closed'),
+(28,10,'2024-25',297000,'Closed'),
+(29,10,'2025-26',327000,'Closed'),
+(30,10,'2026-27',294000,'Closed'),
+(31,11,'2024-25',477000,'Closed'),
+(32,11,'2025-26',477000,'Closed'),
+(33,11,'2026-27',453000,'Closed'),
+(34,12,'2024-25',281000,'Closed'),
+(35,12,'2025-26',320000,'Closed'),
+(36,12,'2026-27',346000,'Closed'),
+(37,13,'2024-25',88000,'Closed'),
+(38,13,'2025-26',88000,'Closed'),
+(39,13,'2026-27',95000,'Closed'),
+(40,14,'2024-25',379000,'Closed'),
+(41,14,'2025-26',398000,'Closed'),
+(42,14,'2026-27',398000,'Closed'),
+(43,15,'2024-25',279000,'Closed'),
+(44,15,'2025-26',307000,'Closed'),
+(45,15,'2026-27',307000,'Closed'),
+(46,16,'2024-25',325000,'Closed'),
+(47,16,'2025-26',315000,'Closed'),
+(48,16,'2026-27',328000,'Closed'),
+(49,17,'2024-25',110000,'Closed'),
+(50,17,'2025-26',101000,'Closed'),
+(51,17,'2026-27',109000,'Closed'),
+(52,18,'2024-25',339000,'Closed'),
+(53,18,'2025-26',373000,'Closed'),
+(54,18,'2026-27',373000,'Closed'),
+(55,19,'2024-25',425000,'Closed'),
+(56,19,'2025-26',391000,'Closed'),
+(57,19,'2026-27',305000,'Closed'),
+(58,20,'2026-27',210000,'Closed');
